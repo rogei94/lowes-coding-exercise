@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/lookUpFragment">
+
+    <fragment
+        android:id="@+id/lookUpFragment"
+        android:name="com.example.lowescodingexercise.view.fragment.LookUpFragment"
+        android:label="Look Up"
+        tools:layout="@layout/fragment_look_up">
+        <action
+            android:id="@+id/go_forecastFragment"
+            app:destination="@id/forecastFragment" />
+        <argument
+            android:name="forecast"
+            app:argType="com.example.lowescodingexercise.model.data.Forecast"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/forecastFragment"
+        android:name="com.example.lowescodingexercise.view.fragment.ForecastFragment"
+        android:label="Weather"
+        tools:layout="@layout/fragment_forecast">
+        <action
+            android:id="@+id/go_weatherDetailFragment"
+            app:destination="@id/weatherDetailFragment" />
+        <action
+            android:id="@+id/action_forecastFragment_to_lookUpFragment2"
+            app:destination="@id/lookUpFragment" />
+        <argument
+            android:name="forecast"
+            app:argType="com.example.lowescodingexercise.model.data.WeatherInfo"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/weatherDetailFragment"
+        android:name="com.example.lowescodingexercise.view.fragment.WeatherDetailFragment"
+        android:label="Weather details"
+        tools:layout="@layout/fragment_weather_detail" >
+        <action
+            android:id="@+id/action_weatherDetailFragment_to_forecastFragment"
+            app:destination="@id/forecastFragment" />
+    </fragment>
+
+</navigation>

@@ -47,13 +47,11 @@ class LookUpFragment : Fragment() {
                     Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                 }
                 is DataState.Success -> {
-                    Log.e("JSON_LOG", gson.toJson(it.response))
                     val bundle = bundleOf("forecast" to it.response)
                     view?.findNavController()?.navigate(R.id.go_forecastFragment, bundle)
                 }
                 is DataState.Error -> {
                     Toast.makeText(context, it.error, Toast.LENGTH_SHORT).show()
-                    Log.e("JSON_LOG", gson.toJson(it.error))
                 }
             }
         })
